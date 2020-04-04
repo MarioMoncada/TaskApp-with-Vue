@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task App</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <nav class="navbar navbar-dark bg-dark ">
+        <span class="navbar-brand mb-0 h1">{{title}}</span>
+      </nav>
+      <div class="container mt-3">
+        <p>Add your favorite and dialy tasks</p>
+      </div>
+      <input
+        type="text"
+        v-model="newTask"
+        class="form-control-sm mt-3 ml-2 mb-2"
+        v-on:keyup.enter="addTask"
+      /><br />
+      <button class="btn btn-primary mt-2  mb-3 ml-2" @click="addTask">
+        Add Task
+      </button>
+      <div v-for="(items, index of task">
+        <div
+          class="ml-2 mr-3"
+          role="alert"
+          :class="['alert', items.state ?'alert-success':'alert-danger']"
+        >
+          <div class="d-flex justify-content-between">
+            <div>{{items.name}}</div>
+            <div>
+              <button class="btn btn-outline-success" @click="editTask(index)">
+                Ok
+              </button>
+              <button
+                class="btn btn-outline-danger "
+                @click="deleteTask(index)"
+              >
+                X
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="index.js "></script>
+  </body>
+</html>
